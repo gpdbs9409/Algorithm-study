@@ -77,7 +77,6 @@ PR 전체에 대한 코멘트로 작성해도 됩니다.
 
 ※ 일정 및 문제는 스터디 진행 상황에 따라 변경될 수 있습니다.
 
-https://school.programmers.co.kr/learn/challenges?order=acceptance_desc&page=1
 
 
 ---
