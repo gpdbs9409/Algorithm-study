@@ -1,3 +1,5 @@
+package week02;
+
 /**
  * @see All
  * @Language Java (OpenJDK 25.02)
@@ -34,9 +36,16 @@
  *            3번 보트 : 50 + 50 = 100 [0]
  *         따라서, 최소값의 보트 탑승 가능 횟수는 3개
  */
+
 import java.util.*;
 
-class Solution {
+class week2_02 {
+    public static void main(String[] args) {
+        week2_02 sol = new week2_02();
+        int[] people = {70, 50, 80, 50};
+        int limit = 100;
+        System.out.println("최소 보트 개수: " + sol.solution(people, limit));
+    }
     public int solution(int[] people, int limit) {
         Arrays.sort(people);
 

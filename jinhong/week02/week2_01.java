@@ -1,3 +1,5 @@
+package week02;
+
 /**
  * @see All
  * @Language Java (OpenJDK 25.02)
@@ -39,9 +41,32 @@
  *           따라서, 최대 입을 수 있는 사람은 1명
  */
 
+
 import java.util.*;
 
-class Solution {
+class week2_01 {
+    public static void main(String[] args) {
+        week2_01 sol = new week2_01();
+
+        // [테스트 케이스 1] 예상 결과: 5
+        int n1 = 5;
+        int[] lost1 = {2, 4};
+        int[] reserve1 = {1, 3, 5};
+        System.out.println("테스트 1 결과: " + sol.solution(n1, lost1, reserve1) + " (예상: 5)");
+
+        // [테스트 케이스 2] 예상 결과: 4
+        int n2 = 5;
+        int[] lost2 = {2, 4};
+        int[] reserve2 = {3};
+        System.out.println("테스트 2 결과: " + sol.solution(n2, lost2, reserve2) + " (예상: 4)");
+
+        // [테스트 케이스 3] 예상 결과: 2
+        int n3 = 3;
+        int[] lost3 = {3};
+        int[] reserve3 = {1};
+        System.out.println("테스트 3 결과: " + sol.solution(n3, lost3, reserve3) + " (예상: 2)");
+    }
+
     public int solution(int n, int[] lost, int[] reserve) {
         HashSet<Integer> lostSet = new HashSet<>();
         HashSet<Integer> reserveSet = new HashSet<>();

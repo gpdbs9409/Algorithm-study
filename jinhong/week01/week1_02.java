@@ -1,3 +1,5 @@
+package week01;
+
 /**
  * @see All
  * @Language Java (OpenJDK 25.02)
@@ -26,13 +28,34 @@
  * | [2, 2, 2, 2, 2]	   | 6	| [0, 2]
  */
 
+import java.util.Arrays;
+
 /**
  * 조건1. K 값에 해당 값을 배열에 담아 출력한다.
  *.     * 결국 answer의 값은 2개(시작점, 종료지점)로 처리된다.
  * 조건2. K 값이 동일 하다면 길이(Index)가 더 짧은 값을 정답으로 처리한다.
  */
 
-class Solution {
+class week1_02 {
+    public static void main(String[] args) {
+        week1_02 sol = new week1_02();
+
+        // [테스트 케이스 1] k = 7 -> 예상 결과: [2, 3]
+        int[] seq1 = {1, 2, 3, 4, 5};
+        int k1 = 7;
+        System.out.println("테스트 1 결과: " + Arrays.toString(sol.solution(seq1, k1)));
+
+        // [테스트 케이스 2] k = 5 -> 예상 결과: [6, 6]
+        int[] seq2 = {1, 1, 1, 2, 3, 4, 5};
+        int k2 = 5;
+        System.out.println("테스트 2 결과: " + Arrays.toString(sol.solution(seq2, k2)));
+
+        // [테스트 케이스 3] k = 6 -> 예상 결과: [0, 2]
+        int[] seq3 = {2, 2, 2, 2, 2};
+        int k3 = 6;
+        System.out.println("테스트 3 결과: " + Arrays.toString(sol.solution(seq3, k3)));
+    }
+
     public int[] solution(int[] sequence, int k) {
         int[] answer = new int[2];
 

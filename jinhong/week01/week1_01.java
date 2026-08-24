@@ -1,3 +1,5 @@
+package week01;
+
 /**
  * @see All
  * @Language Java (OpenJDK 25.02)
@@ -32,49 +34,52 @@
 
 import java.util.Stack;
 import java.util.Arrays;
-class Solution {
-    String[] IO_data = new String[3];
-    IO_date[0] = "()()";
-    IO_date[1] = "(())()";
-    IO_date[2] = ")()(";
-    IO_date[3] = "(()(";
+class week1_01 {
+    public static void main(String[] args) {
+        week1_01 sol = new week1_01();
 
-    for(Stirng item : arr) {
-        // Stack 방식
-        System.out.println(solution1(String item));
-        // toCharArray 방식
-        // solutio2(String item);
+        // 테스트할 괄호 문자열 예제들
+        String testCase1 = "(())()"; // 올바른 괄호 (true)
+        String testCase2 = "(()(";   // 잘못된 괄호 (false)
+
+        System.out.println("--- 1번 Stack 방식 결과 ---");
+        System.out.println("테스트 1 결과: " + sol.solution1(testCase1));
+        System.out.println("테스트 2 결과: " + sol.solution1(testCase2));
+
+        System.out.println("\n--- 2번 toCharArray 방식 결과 ---");
+        System.out.println("테스트 1 결과: " + sol.solution2(testCase1));
+        System.out.println("테스트 2 결과: " + sol.solution2(testCase2));
     }
-}
 
-boolean solution1(String s) {
-    boolean answer = false;
+    boolean solution1(String s) {
+        boolean answer = false;
 
-    Stack<Character> st = new Stack<>();
-    for(int i=0; i<s.length(); i++) {
-        char dif = s.charAt(i);
+        Stack<Character> st = new Stack<>();
+        for (int i = 0; i < s.length(); i++) {
+            char dif = s.charAt(i);
 
-        if('(' == dif) {
-            st.push(dif);
-        } else if( ')' == dif) {
-            if(st.isEmpty()) return answer;
-            st.pop();
+            if ('(' == dif) {
+                st.push(dif);
+            } else if (')' == dif) {
+                if (st.isEmpty()) return answer;
+                st.pop();
+            }
         }
+        return st.isEmpty();
     }
-    return st.isEmpty();
-}
 
-boolean solution2(String s) {
-    int count = 0;
+    boolean solution2(String s) {
+        int count = 0;
 
-    for (char dif : s.toCharArray()) {
-        if (dif == '(') {
-            count++;
-        } else if (dif == ')') {
-            if (count == 0) return false;
-            count--;
+        for (char dif : s.toCharArray()) {
+            if (dif == '(') {
+                count++;
+            } else if (dif == ')') {
+                if (count == 0) return false;
+                count--;
+            }
         }
-    }
 
-    return count == 0;
+        return count == 0;
+    }
 }
