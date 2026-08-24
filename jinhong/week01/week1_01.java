@@ -35,6 +35,39 @@ package week01;
 import java.util.Stack;
 class week1_01 {
 
+    boolean solution1(String s) {
+        boolean answer = false;
+
+        Stack<Character> st = new Stack<>();
+        for (int i = 0; i < s.length(); i++) {
+            char dif = s.charAt(i);
+
+            if ('(' == dif) {
+                st.push(dif);
+            } else if (')' == dif) {
+                if (st.isEmpty()) return answer;
+                st.pop();
+            }
+        }
+        return st.isEmpty();
+    }
+
+    boolean solution2(String s) {
+        int count = 0;
+
+        for (char dif : s.toCharArray()) {
+            if (dif == '(') {
+                count++;
+            } else if (dif == ')') {
+                if (count == 0) return false;
+                count--;
+            }
+        }
+
+        return count == 0;
+    }
+
+
     public static void profileTestCase(String testNumber, String expected, Runnable testAction) {
         long startTime = System.nanoTime();
         testAction.run(); // 넘겨받은 익명 클래스의 run() 메서드를 여기서 실행!
@@ -83,37 +116,5 @@ class week1_01 {
             }
         });
 
-    }
-
-    boolean solution1(String s) {
-        boolean answer = false;
-
-        Stack<Character> st = new Stack<>();
-        for (int i = 0; i < s.length(); i++) {
-            char dif = s.charAt(i);
-
-            if ('(' == dif) {
-                st.push(dif);
-            } else if (')' == dif) {
-                if (st.isEmpty()) return answer;
-                st.pop();
-            }
-        }
-        return st.isEmpty();
-    }
-
-    boolean solution2(String s) {
-        int count = 0;
-
-        for (char dif : s.toCharArray()) {
-            if (dif == '(') {
-                count++;
-            } else if (dif == ')') {
-                if (count == 0) return false;
-                count--;
-            }
-        }
-
-        return count == 0;
     }
 }
