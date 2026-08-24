@@ -20,11 +20,11 @@
  * 여벌 체육복을 가져온 학생이 체육복을 도난당했을 수 있습니다. 이때 이 학생은 체육복을 하나만 도난당했다고 가정하며, 남은 체육복이 하나이기에 다른 학생에게는 체육복을 빌려줄 수 없습니다.
  *
  * @TestCase(I/O)
- * | n	| lost	| reserve	| return |
+ * | n  | lost  | reserve   | return |
  * | ------------------------------- |
  * | 5	| [2, 4]| [1, 3, 5]	| 5      |
- * | 5	| [2, 4]| [3]	    | 4      |
- * | 3	| [3]   | [1]	    | 2      |
+ * | 5	| [2, 4]| [3]       | 4      |
+ * | 3	| [3]   | [1]       | 2      |
  */
 
 /**
@@ -52,12 +52,15 @@ class Solution {
         HashSet<Integer> intersection = new HashSet<>(lostSet);
         intersection.retainAll(reserveSet);
 
+        // 빌려야하는 사람과 빌려주는 사람을 제외한 나머지 인원 삭제
+        // 해당 그래디를 진행하기 위해서 필요 없는 사람을 지워야 확인이 가능
         lostSet.removeAll(intersection);
         reserveSet.removeAll(intersection);
 
         int answer = n - lostSet.size();
 
         for (int r : reserveSet) {
+            // 왼쪽 사람을 먼저 전달, 전달할 사람이 없다면 오른쪽 사람에게 전달
             if (lostSet.contains(r - 1)) {
                 lostSet.remove(r - 1);
                 answer++;
