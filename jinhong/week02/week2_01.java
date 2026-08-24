@@ -44,28 +44,7 @@ package week02;
 
 import java.util.*;
 
-class Solution {
-    public static void main(String[] args) {
-        Solution sol = new Solution();
-
-        // [테스트 케이스 1] 예상 결과: 5
-        int n1 = 5;
-        int[] lost1 = {2, 4};
-        int[] reserve1 = {1, 3, 5};
-        System.out.println("테스트 1 결과: " + sol.solution(n1, lost1, reserve1) + " (예상: 5)");
-
-        // [테스트 케이스 2] 예상 결과: 4
-        int n2 = 5;
-        int[] lost2 = {2, 4};
-        int[] reserve2 = {3};
-        System.out.println("테스트 2 결과: " + sol.solution(n2, lost2, reserve2) + " (예상: 4)");
-
-        // [테스트 케이스 3] 예상 결과: 2
-        int n3 = 3;
-        int[] lost3 = {3};
-        int[] reserve3 = {1};
-        System.out.println("테스트 3 결과: " + sol.solution(n3, lost3, reserve3) + " (예상: 2)");
-    }
+class week2_01 {
 
     public int solution(int n, int[] lost, int[] reserve) {
         HashSet<Integer> lostSet = new HashSet<>();
@@ -96,5 +75,52 @@ class Solution {
         }
 
         return answer;
+    }
+
+    public static void profileTestCase(String testNumber, String expected, Runnable testAction) {
+        long startTime = System.nanoTime();
+        testAction.run(); // 넘겨받은 익명 클래스의 run() 메서드를 여기서 실행!
+        long endTime = System.nanoTime();
+
+        long durationNano = endTime - startTime;
+        double durationMilli = durationNano / 1000000.0;
+
+        System.out.println("🎯 [테스트 " + testNumber + " 예상 결과]: " + expected);
+        System.out.println("⏳ [처리 시간]: " + durationMilli + " ms");
+        System.out.println("--------------------------------------------------\n");
+    }
+
+    public static void main(String[] args) {
+        week2_01 sol = new week2_01();
+
+        profileTestCase("1", "5", new Runnable() {
+            @Override
+            public void run() {
+                int n = 5;
+                int[] lost = {2, 4};
+                int[] reserve = {1, 3, 5};
+                System.out.println("실제 출력 결과 : " + sol.solution(n, lost, reserve));
+            }
+        });
+
+        profileTestCase("2", "4", new Runnable() {
+            @Override
+            public void run() {
+                int n = 5;
+                int[] lost = {2, 4};
+                int[] reserve = {3};
+                System.out.println("실제 출력 결과 : " + sol.solution(n, lost, reserve));
+            }
+        });
+
+        profileTestCase("3", "2", new Runnable() {
+            @Override
+            public void run() {
+                int n = 3;
+                int[] lost = {3};
+                int[] reserve = {1};
+                System.out.println("실제 출력 결과 : " + sol.solution(n, lost, reserve));
+            }
+        });
     }
 }

@@ -39,26 +39,7 @@ package week02;
  *       [3,1,X,X] = (본인 수보다 큼) => [3,2,X,X] = (본인 수보다 크지만 채워둘 자릿수 부족) => [3,2,3,4]
  */
 
-class Solution {
-    public static void main(String[] args) {
-        // 현재 클래스인 week2_03의 객체를 생성합니다.
-        Solution sol = new Solution();
-
-        // [테스트 케이스 1] 예상 결과: "94"
-        String num1 = "1924";
-        int k1 = 2;
-        System.out.println("테스트 1 결과: " + sol.solution(num1, k1) + " (예상: 94)");
-
-        // [테스트 케이스 2] 예상 결과: "3234"
-        String num2 = "1231234";
-        int k2 = 3;
-        System.out.println("테스트 2 결과: " + sol.solution(num2, k2) + " (예상: 3234)");
-
-        // [테스트 케이스 3] 예상 결과: "775841"
-        String num3 = "4177252841";
-        int k3 = 4;
-        System.out.println("테스트 3 결과: " + sol.solution(num3, k3) + " (예상: 775841)");
-    }
+class week2_03 {
 
     public String solution(String number, int k) {
         char[] arr = new char[number.length() - k];
@@ -82,5 +63,50 @@ class Solution {
             }
         }
         return new String(arr);
+    }
+
+    public static void profileTestCase(String testNumber, String expected, Runnable testAction) {
+        long startTime = System.nanoTime();
+        testAction.run(); // 넘겨받은 익명 클래스의 run() 메서드를 여기서 실행!
+        long endTime = System.nanoTime();
+
+        long durationNano = endTime - startTime;
+        double durationMilli = durationNano / 1000000.0;
+
+        System.out.println("🎯 [테스트 " + testNumber + " 예상 결과]: " + expected);
+        System.out.println("⏳ [처리 시간]: " + durationMilli + " ms");
+        System.out.println("--------------------------------------------------\n");
+    }
+
+    public static void main(String[] args) {
+        // 현재 클래스인 week2_03의 객체를 생성합니다.
+        week2_03 sol = new week2_03();
+
+        profileTestCase("1", "94", new Runnable() {
+            @Override
+            public void run() {
+                String num1 = "1924";
+                int k1 = 2;
+                System.out.println("실제 출력 결과: " + sol.solution(num1, k1));
+            }
+        });
+
+        profileTestCase("2", "3234", new Runnable() {
+            @Override
+            public void run() {
+                String num2 = "1231234";
+                int k2 = 3;
+                System.out.println("실제 출력 결과: " + sol.solution(num2, k2));
+            }
+        });
+
+        profileTestCase("3", "775841", new Runnable() {
+            @Override
+            public void run() {
+                String num3 = "4177252841";
+                int k3 = 4;
+                System.out.println("실제 출력 결과: " + sol.solution(num3, k3));
+            }
+        });
     }
 }

@@ -33,22 +33,56 @@ package week01;
  */
 
 import java.util.Stack;
-import java.util.Arrays;
-class Solution {
+class week1_01 {
+
+    public static void profileTestCase(String testNumber, String expected, Runnable testAction) {
+        long startTime = System.nanoTime();
+        testAction.run(); // 넘겨받은 익명 클래스의 run() 메서드를 여기서 실행!
+        long endTime = System.nanoTime();
+
+        long durationNano = endTime - startTime;
+        double durationMilli = durationNano / 1000000.0;
+
+        System.out.println("🎯 [테스트 " + testNumber + " 예상 결과]: " + expected);
+        System.out.println("⏳ [처리 시간]: " + durationMilli + " ms");
+        System.out.println("--------------------------------------------------\n");
+    }
+
     public static void main(String[] args) {
-        Solution sol = new Solution();
+        week1_01 sol = new week1_01();
 
-        // 테스트할 괄호 문자열 예제들
-        String testCase1 = "(())()"; // 올바른 괄호 (true)
-        String testCase2 = "(()(";   // 잘못된 괄호 (false)
+        profileTestCase("1-1", "true", new Runnable() {
+            @Override
+            public void run() {
+                String testCase = "(())()";
+                System.out.println("실제 출력 결과 : " + sol.solution1(testCase));
+            }
+        });
 
-        System.out.println("--- 1번 Stack 방식 결과 ---");
-        System.out.println("테스트 1 결과: " + sol.solution1(testCase1));
-        System.out.println("테스트 2 결과: " + sol.solution1(testCase2));
+        profileTestCase("1-2", "false", new Runnable() {
+            @Override
+            public void run() {
+                String testCase = "(()(";
+                System.out.println("실제 출력 결과 : " + sol.solution1(testCase));
+            }
+        });
 
-        System.out.println("\n--- 2번 toCharArray 방식 결과 ---");
-        System.out.println("테스트 1 결과: " + sol.solution2(testCase1));
-        System.out.println("테스트 2 결과: " + sol.solution2(testCase2));
+        profileTestCase("2-1", "true", new Runnable() {
+            @Override
+            public void run() {
+                String testCase = "(())()";
+                System.out.println("실제 출력 결과 : " + sol.solution2(testCase));
+            }
+        });
+
+        profileTestCase("2-2", "false", new Runnable() {
+            @Override
+            public void run() {
+                String testCase = "(()(";
+                System.out.println("실제 출력 결과 : " + sol.solution2(testCase));
+            }
+        });
+
     }
 
     boolean solution1(String s) {

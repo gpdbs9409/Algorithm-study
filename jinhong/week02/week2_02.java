@@ -39,13 +39,7 @@ package week02;
 
 import java.util.*;
 
-class Solution {
-    public static void main(String[] args) {
-        Solution sol = new Solution();
-        int[] people = {70, 50, 80, 50};
-        int limit = 100;
-        System.out.println("최소 보트 개수: " + sol.solution(people, limit));
-    }
+class week2_02 {
     public int solution(int[] people, int limit) {
         Arrays.sort(people);
 
@@ -59,5 +53,38 @@ class Solution {
         }
 
         return answer;
+    }
+
+    public static void profileTestCase(String testNumber, String expected, Runnable testAction) {
+        long startTime = System.nanoTime();
+        testAction.run(); // 넘겨받은 익명 클래스의 run() 메서드를 여기서 실행!
+        long endTime = System.nanoTime();
+
+        long durationNano = endTime - startTime;
+        double durationMilli = durationNano / 1000000.0;
+
+        System.out.println("🎯 [테스트 " + testNumber + " 예상 결과]: " + expected);
+        System.out.println("⏳ [처리 시간]: " + durationMilli + " ms");
+        System.out.println("--------------------------------------------------\n");
+    }
+    public static void main(String[] args) {
+        week2_02 sol = new week2_02();
+        profileTestCase("1", "3", new Runnable() {
+            @Override
+            public void run() {
+                int[] people = {70, 50, 80, 50};
+                int limit = 100;
+                System.out.println("실제 출력 결과 : " + sol.solution(people, limit));
+            }
+        });
+
+        profileTestCase("1", "3", new Runnable() {
+            @Override
+            public void run() {
+                int[] people = {70, 80, 50};
+                int limit = 100;
+                System.out.println("실제 출력 결과 : " + sol.solution(people, limit));
+            }
+        });
     }
 }
