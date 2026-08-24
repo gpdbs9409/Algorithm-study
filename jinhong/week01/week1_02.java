@@ -1,3 +1,5 @@
+package week01;
+
 /**
  * @see All
  * @Language Java (OpenJDK 25.02)
@@ -26,13 +28,16 @@
  * | [2, 2, 2, 2, 2]	   | 6	| [0, 2]
  */
 
+import java.util.Arrays;
+
 /**
- * 조건1 K 값에 해당 값을 배열에 담아 출력한다.
+ * 조건1. K 값에 해당 값을 배열에 담아 출력한다.
  *.     * 결국 answer의 값은 2개(시작점, 종료지점)로 처리된다.
- * 조건2 K 값이 동일 하다면 길이(Index)가 더 짧은 값을 정답으로 처리한다.
+ * 조건2. K 값이 동일 하다면 길이(Index)가 더 짧은 값을 정답으로 처리한다.
  */
 
-class Solution {
+class week1_02 {
+
     public int[] solution(int[] sequence, int k) {
         int[] answer = new int[2];
 
@@ -65,5 +70,48 @@ class Solution {
             }
         }
         return answer;
+    }
+
+    public static void profileTestCase(String testNumber, String expected, Runnable testAction) {
+        long startTime = System.nanoTime();
+        testAction.run(); // 넘겨받은 익명 클래스의 run() 메서드를 여기서 실행!
+        long endTime = System.nanoTime();
+
+        long durationNano = endTime - startTime;
+        double durationMilli = durationNano / 1000000.0;
+
+        System.out.println("🎯 [테스트 " + testNumber + " 예상 결과]: " + expected);
+        System.out.println("⏳ [처리 시간]: " + durationMilli + " ms");
+        System.out.println("--------------------------------------------------\n");
+    }
+    public static void main(String[] args) {
+        week1_02 sol = new week1_02();
+
+        profileTestCase("1", "[2, 3]", new Runnable() {
+            @Override
+            public void run() {
+                int[] seq = {1, 2, 3, 4, 5};
+                int k = 7;
+                System.out.println("실제 출력 결과 : " + sol.solution(seq, k));
+            }
+        });
+
+        profileTestCase("2", "[2, 3]", new Runnable() {
+            @Override
+            public void run() {
+                int[] seq = {1, 1, 1, 2, 3, 4, 5};
+                int k = 5;
+                System.out.println("실제 출력 결과 : " + sol.solution(seq, k));
+            }
+        });
+
+        profileTestCase("3", "[0, 2]", new Runnable() {
+            @Override
+            public void run() {
+                int[] seq = {2, 2, 2, 2, 2};
+                int k = 6;
+                System.out.println("실제 출력 결과 : " + sol.solution(seq, k));
+            }
+        });
     }
 }
