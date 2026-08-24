@@ -44,9 +44,9 @@ package week02;
 
 import java.util.*;
 
-class week2_01 {
+class Solution {
     public static void main(String[] args) {
-        week2_01 sol = new week2_01();
+        Solution sol = new Solution();
 
         // [테스트 케이스 1] 예상 결과: 5
         int n1 = 5;

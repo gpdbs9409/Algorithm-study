@@ -39,9 +39,9 @@ package week02;
 
 import java.util.*;
 
-class week2_02 {
+class Solution {
     public static void main(String[] args) {
-        week2_02 sol = new week2_02();
+        Solution sol = new Solution();
         int[] people = {70, 50, 80, 50};
         int limit = 100;
         System.out.println("최소 보트 개수: " + sol.solution(people, limit));

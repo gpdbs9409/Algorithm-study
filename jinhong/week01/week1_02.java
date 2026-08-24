@@ -36,9 +36,9 @@ import java.util.Arrays;
  * 조건2. K 값이 동일 하다면 길이(Index)가 더 짧은 값을 정답으로 처리한다.
  */
 
-class week1_02 {
+class Solution {
     public static void main(String[] args) {
-        week1_02 sol = new week1_02();
+        Solution sol = new Solution();
 
         // [테스트 케이스 1] k = 7 -> 예상 결과: [2, 3]
         int[] seq1 = {1, 2, 3, 4, 5};

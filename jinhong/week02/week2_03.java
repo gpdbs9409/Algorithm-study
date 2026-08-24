@@ -39,10 +39,10 @@ package week02;
  *       [3,1,X,X] = (본인 수보다 큼) => [3,2,X,X] = (본인 수보다 크지만 채워둘 자릿수 부족) => [3,2,3,4]
  */
 
-class week2_03 {
+class Solution {
     public static void main(String[] args) {
         // 현재 클래스인 week2_03의 객체를 생성합니다.
-        week2_03 sol = new week2_03();
+        Solution sol = new Solution();
 
         // [테스트 케이스 1] 예상 결과: "94"
         String num1 = "1924";

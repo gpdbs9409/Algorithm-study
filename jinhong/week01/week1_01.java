@@ -34,9 +34,9 @@ package week01;
 
 import java.util.Stack;
 import java.util.Arrays;
-class week1_01 {
+class Solution {
     public static void main(String[] args) {
-        week1_01 sol = new week1_01();
+        Solution sol = new Solution();
 
         // 테스트할 괄호 문자열 예제들
         String testCase1 = "(())()"; // 올바른 괄호 (true)
