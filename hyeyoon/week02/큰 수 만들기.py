@@ -5,10 +5,9 @@
 
 
 # 아이디어
- 
+ 무작정 투포인터를 사용하는 것이 아니라,list 그 자체를 변형하면서도  O(n^2)이 걸리지 않는다면 그대로가기 
 
-
-#sol1 
+#sol1  >답도 틀림 (tc 2/3커버) 
 def solution(number, k):
     answer = ''
     
@@ -36,3 +35,21 @@ def solution(number, k):
                  
     
     return ''.join(numbers)
+
+#sol2 > 원본리스트를 삭제하지않고 새로운 stack을 만들어서 반환하는 방법 
+def solution(number, k):
+    answer = ''
+    number=list(number)
+    stack=[]
+    for num in number:
+        
+        while k>=1 and stack and stack[-1]<num:
+            stack.pop()
+            k-=1
+        
+        stack.append(num)
+    
+    
+    answer=''.join(stack)
+    
+    return answer
