@@ -5,18 +5,16 @@
 
 
 
-#sol1  >답도 틀림 (tc 2/3커버) 
+#sol1  > 불필요한 포인터 사용 (list변화가 필요하기 떄문에 시간복잡도를 위해서 포인터 사용이 필요하다고 생각했으나 오히려 불필요한 변수 축가로 인한 .) 
+
     def solution(number, k):
         answer = ''
-        
-        #시간복잡도를 위해서 탐색에 투포인터를 도입? > 단순 탐색이아니라 실제로 list변경이 필요할듯하여 투포인터가 아닌 실제 리스트를 이용 
-    
         pointer=0
         numbers=list(number)
         
-        #k>=1이여서 제거의 기회가 남아있다. 
-        while k>=1:
-            
+        #k는 변경가능횟수 
+      
+        while k>=1:      
                 if pointer==len(numbers)-1:
                     numbers.pop()
                     k -=1
