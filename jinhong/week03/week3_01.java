@@ -1,4 +1,4 @@
-package week3;
+package week03;
 
 /**
  * @see All
@@ -33,7 +33,7 @@ package week3;
  *
  */
 
-public class week3_02 {
+public class week3_01 {
     public int solution(int[] numbers, int target) {
         int answer = 0;
         return answer;
@@ -41,7 +41,7 @@ public class week3_02 {
 
     public static void profileTestCase(String testNumber, String expected, Runnable testAction) {
         long startTime = System.nanoTime();
-        testAction.run(); // 넘겨받은 익명 클래스의 run() 메서드를 여기서 실행!
+        testAction.run(); 
         long endTime = System.nanoTime();
 
         long durationNano = endTime - startTime;
@@ -53,7 +53,7 @@ public class week3_02 {
     }
 
     public static void main(String[] args) {
-        week3_02 sol = new week3_02();
+        week3_01 sol = new week3_01();
 
         profileTestCase("1", "5", new Runnable() {
             @Override

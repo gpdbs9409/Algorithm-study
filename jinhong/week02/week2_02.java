@@ -57,7 +57,7 @@ class week2_02 {
 
     public static void profileTestCase(String testNumber, String expected, Runnable testAction) {
         long startTime = System.nanoTime();
-        testAction.run(); // 넘겨받은 익명 클래스의 run() 메서드를 여기서 실행!
+        testAction.run();
         long endTime = System.nanoTime();
 
         long durationNano = endTime - startTime;
