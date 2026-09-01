@@ -3,26 +3,29 @@ package week03;
 /**
  * @see All
  * @Language Java (OpenJDK 25.02)
- * @문제번호 43162
+ * @문제번호 86971 [전력망을 둘로 나누기]
+ * @문제유형 완전탐색
  * @문제설명
- * 네트워크란 컴퓨터 상호 간에 정보를 교환할 수 있도록 연결된 형태를 의미합니다.
- * 예를 들어, 컴퓨터 A와 컴퓨터 B가 직접적으로 연결되어있고, 컴퓨터 B와 컴퓨터 C가 직접적으로 연결되어 있을 때
- * 컴퓨터 A와 컴퓨터 C도 간접적으로 연결되어 정보를 교환할 수 있습니다.
- * 따라서 컴퓨터 A, B, C는 모두 같은 네트워크 상에 있다고 할 수 있습니다.
+ * n개의 송전탑이 전선을 통해 하나의 트리 형태로 연결되어 있습니다.
+ * 당신은 이 전선들 중 하나를 끊어서 현재의 전력망 네트워크를 2개로 분할하려고 합니다.
+ * 이때, 두 전력망이 갖게 되는 송전탑의 개수를 최대한 비슷하게 맞추고자 합니다.
  *
- * 컴퓨터의 개수 n, 연결에 대한 정보가 담긴 2차원 배열 computers가 매개변수로 주어질 때,
- * 네트워크의 개수를 return 하도록 solution 함수를 작성하시오.
+ * 송전탑의 개수 n, 그리고 전선 정보 wires가 매개변수로 주어집니다.
+ * 전선들 중 하나를 끊어서 송전탑 개수가 가능한 비슷하도록 두 전력망으로 나누었을 때,
+ * 두 전력망이 가지고 있는 송전탑 개수의 차이(절대값)를 return 하도록 solution 함수를 완성해주세요.
  *
  * @제한사항
- * 컴퓨터의 개수 n은 1 이상 200 이하인 자연수입니다.
- * 각 컴퓨터는 0부터 n-1인 정수로 표현합니다.
- * i번 컴퓨터와 j번 컴퓨터가 연결되어 있으면 computers[i][j]를 1로 표현합니다.
- * computer[i][i]는 항상 1입니다.
+ * n은 2 이상 100 이하인 자연수입니다.
+ * wires는 길이가 n-1인 정수형 2차원 배열입니다.
+ * wires의 각 원소는 [v1, v2] 2개의 자연수로 이루어져 있으며, 이는 전력망의 v1번 송전탑과 v2번 송전탑이 전선으로 연결되어 있다는 것을 의미합니다.
+ * 1 ≤ v1 < v2 ≤ n 입니다.
+ * 전력망 네트워크가 하나의 트리 형태가 아닌 경우는 입력으로 주어지지 않습니다.
  *
  * @TestCase(I/O)
- * | n | computers                         | return |
- * | 3 | [[1, 1, 0], [1, 1, 0], [0, 0, 1]] | 2      |
- * | 3 | [[1, 1, 0], [1, 1, 1], [0, 1, 1]] | 1      |
+ * | n   | wires                                             | result |
+ * | 9   | [[1,3],[2,3],[3,4],[4,5],[4,6],[4,7],[7,8],[7,9]] | 3      |
+ * | 4   | [[1,2],[2,3],[3,4]]                               | 0      |
+ * | 7   | [[1,2],[2,7],[3,7],[3,4],[4,5],[6,7]]             | 1      |
  */
 
 /**
@@ -52,21 +55,30 @@ public class week3_03 {
     public static void main(String[] args) {
         week3_03 sol = new week3_03();
 
-        profileTestCase("1", "2", new Runnable() {
+        profileTestCase("1", "3", new Runnable() {
             @Override
             public void run() {
-                int n = 3;
-                int[][] computers = {{1, 1, 0}, {1, 1, 0}, {0, 0, 1}};
-                System.out.println("실제 출력 결과: " + sol.solution(n, computers));
+                int n = 9;
+                int[][] wires = {{1,3},{2,3},{3,4},{4,5},{4,6},{4,7},{7,8},{7,9}};
+                System.out.println("실제 출력 결과: " + sol.solution(n, wires));
             }
         });
 
-        profileTestCase("2", "1", new Runnable() {
+        profileTestCase("2", "0", new Runnable() {
             @Override
             public void run() {
-                int n = 3;
-                int[][] computers = {{1, 1, 0}, {1, 1, 1}, {0, 1, 1}};
-                System.out.println("실제 출력 결과: " + sol.solution(n, computers));
+                int n = 4;
+                int[][] wires = {{1,2},{2,3},{3,4}};
+                System.out.println("실제 출력 결과: " + sol.solution(n, wires));
+            }
+        });
+
+        profileTestCase("3", "1", new Runnable() {
+            @Override
+            public void run() {
+                int n = 7;
+                int[][] wires = {{1,2},{2,7},{3,7},{3,4},{4,5},{6,7}};
+                System.out.println("실제 출력 결과: " + sol.solution(n, wires));
             }
         });
 
