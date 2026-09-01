@@ -27,14 +27,32 @@ package week03;
  */
 
 /**
- * 조건1.
- *
+ * 조건1. 연결된 컴퓨터를 확인하여
+ * 조건2. 기존에 연결된 컴퓨터가 있다면 중복으로 체크하지 않고 스킵한다.
  */
 
 public class week3_02 {
     public int solution(int n, int[][] computers) {
-        int answer = 0;
-        return answer;
+        int count = 0;
+        boolean[] visited = new boolean[n];
+
+        for (int i=0; i<n; i++) {
+            if (!visited[i]) {
+                dfs(computers, visited, n, i);
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public void dfs(int[][] computers, boolean[] visited, int n, int node) {
+        visited[node] = true;
+
+        for (int j=0; j<n; j++) {
+            if (computers[node][j] == 1 && !visited[j]) {
+                dfs(computers, visited, n, j);
+            }
+        }
     }
 
     public static void profileTestCase(String testNumber, String expected, Runnable testAction) {
