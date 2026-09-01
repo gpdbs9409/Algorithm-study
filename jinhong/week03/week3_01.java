@@ -30,14 +30,41 @@ package week03;
  */
 
 /**
- * 조건1.
- *
+ * 조건1. 모든 값을 깊이 탐색을 이용하여 생각하면 아래와 같은 트리 구조방식(tree구조 말하지만, 결국 DFS)으로 풀수 있을 것.
+ *   ex) Start
+ *        ㄴㅡㅡ> 4로 시작
+ *          ㄴㅡㅡ> 4 + 1 = 5 [ X ]
+ *            ㄴㅡㅡ> 5 + 2 = 7 [ X ]
+ *              ㄴㅡㅡ> 7 + 1 = 8 [ X ]
+ *              ㄴㅡㅡ> 7 - 1 = 6 [ X ]
+ *            ㄴㅡㅡ> 5 - 2 = 3 [ X ]
+ *              ㄴㅡㅡ> 3 + 1 = 4 [ O - Stack 1 ]
+ *              ㄴㅡㅡ> 3 - 1 = 2 [ X ]
+ *          ㄴㅡㅡ> 4 - 1 = 3 [ X ]
+ *            ... 내용 생략
+ *        ㄴㅡㅡ> -4로 시작
+ *         ... 내용 생략
+ * 조건2. 즉, 위 상단의 DFS는 2^N(배열의 갯수) 만큼 해당 값을 확인해야함.
+ *     - 매개변수를 "-", "+"만으로 구하라는 조건으로 인해서 2가 되는 것이며, 해당 값의 공식을 구하기 위해서는 위와 같은 공식이 작성된다.
  */
 
 public class week3_01 {
+    int answer = 0;
     public int solution(int[] numbers, int target) {
-        int answer = 0;
+        dfs(numbers, target, 0, 0);
         return answer;
+    }
+
+    public void dfs(int[] numbers, int target, int index, int sum) {
+        if (index == numbers.length) {
+            if (sum == target) {
+                answer++;
+            }
+            return;
+        }
+
+        dfs(numbers, target, index + 1, sum + numbers[index]);
+        dfs(numbers, target, index + 1, sum - numbers[index]);
     }
 
     public static void profileTestCase(String testNumber, String expected, Runnable testAction) {
