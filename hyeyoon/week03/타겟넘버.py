@@ -84,3 +84,6 @@ def solution(numbers, target):
         return dfs(i + 1, now + numbers[i]) + dfs(i + 1, now - numbers[i])
 
     return dfs(0, 0)
+
+배운점 : return 1을 합산해서 최종 정답이 된다는 컨셉에 아직 익숙하지 않았음.. 
+최종 리턴값에서 타깃값에 도달했을 떄의 리턴값(1)을 쭉 더해서 결과물이 나오는 컨셉을 배웠다. 
