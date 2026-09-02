@@ -69,3 +69,18 @@ def solution(numbers, target):
 틀린이유 1: answer은 dfs바깥에 있는변수인데 dfs내부에서 수정하려고 함 
 틀린이유 2: 탐색을 멈춰야하는 시점에 탐색을 멈추지않고 계속 dfs를 호출? i==len(numbers)라는거면 끝까지 탐색을 했다는것이니까 끝내야하는데 계속 dfs호출해버림->무조건 리턴을 해서 함수를 끝내야함.
 틀린이유 3: i+=1을 미리 해버리면 i=0인 경우를 dfs호출에서 빼먹음(numbers[0])을 스킵하게됨 
+
+
+sol3 최종정답
+
+def solution(numbers, target):
+
+    def dfs(i, now):
+        if i == len(numbers):
+            if now == target:
+                return 1
+            return 0
+
+        return dfs(i + 1, now + numbers[i]) + dfs(i + 1, now - numbers[i])
+
+    return dfs(0, 0)
