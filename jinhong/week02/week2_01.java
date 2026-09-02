@@ -3,7 +3,8 @@ package week02;
 /**
  * @see All
  * @Language Java (OpenJDK 25.02)
- * @프로그래머스 42862
+ * @문제번호 42862 [체육복]
+ * @문제유형 탐욕법(Greedy)
  * @문제설명
  * 점심시간에 도둑이 들어, 일부 학생이 체육복을 도난당했습니다. 다행히 여벌 체육복이 있는 학생이 이들에게 체육복을 빌려주려 합니다.
  * 학생들의 번호는 체격 순으로 매겨져 있어, 바로 앞번호의 학생이나 바로 뒷번호의 학생에게만 체육복을 빌려줄 수 있습니다.
@@ -79,7 +80,7 @@ class week2_01 {
 
     public static void profileTestCase(String testNumber, String expected, Runnable testAction) {
         long startTime = System.nanoTime();
-        testAction.run(); // 넘겨받은 익명 클래스의 run() 메서드를 여기서 실행!
+        testAction.run();
         long endTime = System.nanoTime();
 
         long durationNano = endTime - startTime;

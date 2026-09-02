@@ -2,7 +2,8 @@ package week02;
 /**
  * @see All
  * @Language Java (OpenJDK 25.02)
- * @프로그래머스 42883
+ * @문제번호 42883 [큰 수 만들기]
+ * @문제유형 탐욕법(Greedy)
  * @문제설명
  * 어떤 숫자에서 k개의 수를 제거했을 때 얻을 수 있는 가장 큰 숫자를 구하려 합니다.
  * 예를 들어, 숫자 1924에서 수 두 개를 제거하면 [19, 12, 14, 92, 94, 24] 를 만들 수 있습니다.
@@ -67,7 +68,7 @@ class week2_03 {
 
     public static void profileTestCase(String testNumber, String expected, Runnable testAction) {
         long startTime = System.nanoTime();
-        testAction.run(); // 넘겨받은 익명 클래스의 run() 메서드를 여기서 실행!
+        testAction.run();
         long endTime = System.nanoTime();
 
         long durationNano = endTime - startTime;

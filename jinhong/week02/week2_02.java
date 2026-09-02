@@ -3,7 +3,8 @@ package week02;
 /**
  * @see All
  * @Language Java (OpenJDK 25.02)
- * @프로그래머스 42885
+ * @문제번호 42885 [구명보트]
+ * @문제유형 탐욕법(Greedy)
  * @문제설명
  * 무인도에 갇힌 사람들을 구명보트를 이용하여 구출하려고 합니다. 구명보트는 작아서 한 번에 최대 2명씩 밖에 탈 수 없고, 무게 제한도 있습니다.
  * 예를 들어, 사람들의 몸무게가 [70kg, 50kg, 80kg, 50kg]이고 구명보트의 무게 제한이 100kg이라면 2번째 사람과 4번째 사람은 같이 탈 수 있지만
@@ -57,7 +58,7 @@ class week2_02 {
 
     public static void profileTestCase(String testNumber, String expected, Runnable testAction) {
         long startTime = System.nanoTime();
-        testAction.run(); // 넘겨받은 익명 클래스의 run() 메서드를 여기서 실행!
+        testAction.run();
         long endTime = System.nanoTime();
 
         long durationNano = endTime - startTime;

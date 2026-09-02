@@ -3,7 +3,8 @@ package week01;
 /**
  * @see All
  * @Language Java (OpenJDK 25.02)
- * @프로그래머스 178870
+ * @문제번호 178870 [연속된 부분 수열의 합]
+ * @문제유형 연습문제
  * @문제설명
  * 비내림차순으로 정렬된 수열이 주어질 때, 다음 조건을 만족하는 부분 수열을 찾으려고 합니다.
  * 기존 수열에서 임의의 두 인덱스의 원소와 그 사이의 원소를 모두 포함하는 부분 수열이어야 합니다.
@@ -74,7 +75,7 @@ class week1_02 {
 
     public static void profileTestCase(String testNumber, String expected, Runnable testAction) {
         long startTime = System.nanoTime();
-        testAction.run(); // 넘겨받은 익명 클래스의 run() 메서드를 여기서 실행!
+        testAction.run();
         long endTime = System.nanoTime();
 
         long durationNano = endTime - startTime;

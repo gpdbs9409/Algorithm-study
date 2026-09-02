@@ -3,7 +3,8 @@ package week01;
 /**
  * @see All
  * @Language Java (OpenJDK 25.02)
- * @프로그래머스 12909
+ * @문제번호 12909 [올바른 괄호]
+ * @문제유형 스택/큐
  * @문제설명
  * 괄호가 바르게 짝지어졌다는 것은 '(' 문자로 열렸으면 반드시 짝지어서 ')' 문자로 닫혀야 한다는 뜻입니다. 예를 들어
  *
@@ -70,7 +71,7 @@ class week1_01 {
 
     public static void profileTestCase(String testNumber, String expected, Runnable testAction) {
         long startTime = System.nanoTime();
-        testAction.run(); // 넘겨받은 익명 클래스의 run() 메서드를 여기서 실행!
+        testAction.run();
         long endTime = System.nanoTime();
 
         long durationNano = endTime - startTime;
