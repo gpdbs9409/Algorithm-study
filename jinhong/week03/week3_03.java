@@ -29,14 +29,49 @@ package week03;
  */
 
 /**
- * 조건1.
+ * [예제2 - 설명 내용이 짧기 때문]
+ * 조건1. 최소값을 확인하기 위해서 처음 최소값을 Integer의 최대값으로 담기.
+ * 조건2. 이차원배열이지만 사실상 1 - 2 - 3 - 4 형태로 나열되어있음.
+ * 조건3. 1씩 움직일때 마다 전선을 끊어 전기를 공급을 균등하게 배열해야한다.
+ * 조건4. 마지막 배열의 숫자는 앞에 전선을 끊어 전기 공급을 확인한다.
  *
+ * 주의  '두 전력망이 가지고 있는 송전탑 개수의 차이(절대값)'말이 없는 경우
+ *      {-2, 0, 2}로 표출되지만, 저내용으로 인해서 음수를 정수로 변경하기 때문에 [2,0,2]로 표현된다.
  */
 
 public class week3_03 {
-    public int solution(int n, int[][] computers) {
-        int answer = 0;
-        return answer;
+    public int solution(int n, int[][] wires) {
+        int minDiff = Integer.MAX_VALUE;
+
+        for (int i = 0; i < wires.length; i++) {
+            boolean[] visited = new boolean[n + 1];
+
+            int team1Count = dfs(n, 1, visited, wires, i);
+            int team2Count = n - team1Count;
+
+            minDiff = Math.min(minDiff, Math.abs(team1Count - team2Count));
+        }
+        return minDiff;
+    }
+
+    public int dfs(int n, int node, boolean[] visited, int[][] wires, int skipIndex) {
+        visited[node] = true;
+        int count = 1;
+
+        for (int i = 0; i < wires.length; i++) {
+            if (i == skipIndex) continue;
+
+            int v1 = wires[i][0];
+            int v2 = wires[i][1];
+
+            if (v1 == node && !visited[v2]) {
+                count += dfs(n, v2, visited, wires, skipIndex);
+            } else if (v2 == node && !visited[v1]) {
+                count += dfs(n, v1, visited, wires, skipIndex);
+            }
+        }
+
+        return count;
     }
 
     public static void profileTestCase(String testNumber, String expected, Runnable testAction) {
