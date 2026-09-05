@@ -69,6 +69,23 @@ broken_wires = wires[:i] + wires[i+1:]로 전력망을 하나씩 끊을수있다
 
 #연결요소가 3개 이상일 때 각 노드의 갯수 세보기 
 
+=>콜스택의 개념을 사용한다. 
+  
+dfs(1)
+count = 1
+│
+│  dfs(2)
+│  count = 1
+│  │
+│  │  dfs(3)
+│  │  count = 1
+│  │  return 1
+│  │
+│  count = 1 + 1 = 2
+│  return 2
+│
+count = 1 + 2 = 3
+return 3
 
 
 
@@ -79,7 +96,6 @@ def dfs(node):
     for next_node in graph[node]:
         if not visited[next_node]:
             count += dfs(next_node)
-
     return count
 
 groups = []
@@ -88,6 +104,7 @@ for i in range(1, n + 1):
     if not visited[i]:
         count = dfs(i)
         groups.append(count)
+
 
 
 
