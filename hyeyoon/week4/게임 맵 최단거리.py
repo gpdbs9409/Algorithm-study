@@ -169,52 +169,6 @@ def solution(maps):
     return -1
 ```
 
----
-
-# 코드 흐름
-
-현재 위치와 현재까지 이동한 거리를 Queue에 저장한다.
-
-```python
-queue = deque([(0, 0, 1)])
-```
-
-시작점도 하나의 칸으로 포함하므로 거리는 `1`부터 시작한다.
-
-Queue에서 현재 위치를 꺼낸다.
-
-```python
-x, y, distance = queue.popleft()
-```
-
-상/하/좌/우를 탐색하기 위한 배열을 만든다.
-
-```python
-dx = [-1, 1, 0, 0]
-dy = [0, 0, -1, 1]
-```
-
-새로운 좌표를 계산한다.
-
-```python
-nx = x + dx[i]
-ny = y + dy[i]
-```
-
-새로운 좌표가
-
-1. 맵 내부에 있고
-2. 이동 가능한 길이며 (`maps[nx][ny] == 1`)
-3. 아직 방문하지 않았다면
-
-Queue에 추가한다.
-
-```python
-visited[nx][ny] = True
-queue.append((nx, ny, distance + 1))
-```
-
-BFS는 가까운 거리부터 탐색하므로 목적지를 처음 만났을 때의 `distance`가 최단거리이다.
 
 ---
 
