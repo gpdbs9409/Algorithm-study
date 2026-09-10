@@ -33,13 +33,40 @@ package week03;
  */
 
 /**
- * 조건1.
+ * 조건1. [상하 조작] 'A'에서 위로 올리기 vs
+ *       'Z'에서 아래로 내리기 중 버튼을 더 적게 누르는 쪽을 선택한다.
  *
+ * 조건2. [좌우 조작] 글자를 바꾸러 갈 때,
+ *       이미 완성된 'A' 무더기는 건너뛰고 되돌아가는 게 빠른지 계산한다.
+ *
+ * 조건3. [최종 합산] 알파벳을 바꾼 횟수와 커서를 움직인
+ *       최솟값을 더해 게임을 끝내는 최소 점수를 구한다.
  */
 
 public class week3_05 {
     public int solution(String name) {
         int answer = 0;
+        int n = name.length();
+
+        for (int i = 0; i < n; i++) {
+            char c = name.charAt(i);
+            answer += Math.min(c - 'A', 'Z' - c + 1);
+        }
+
+        int minMove = n - 1;
+
+        for (int i = 0; i < n; i++) {
+            int next = i + 1;
+            while (next < n && name.charAt(next) == 'A') {
+                next++;
+            }
+
+            int backAndForth = Math.min(i * 2 + n - next, (n - next) * 2 + i);
+
+            minMove = Math.min(minMove, backAndForth);
+        }
+
+        answer += minMove;
         return answer;
     }
 
