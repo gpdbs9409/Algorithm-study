@@ -81,7 +81,7 @@ PR 전체에 대한 코멘트로 작성해도 됩니다.
 
 | 이름 | 1회 | 2회 | 3회 | 4회 | 5회 | 6회 | 7회 | 8회 | 9회 | 10회 | 11회 | 12회 |
 |------|-----|-----|-----|-----|-----|-----|-----|-----|-----|------|------|------|
-| 혜윤 |     |     |     |     |     |     |     |     |     |      |      |      |
+| 혜윤 |     |     |     |     |     |     |     |     | X   |      |      |      |
 | 진홍 |   |    |   X   | X    |     |     |     |     |     |      |      |      |
 | 주이 |     |     |     |     |     |     |     |     |     |      |      |      |
 | 승현 |     |     |     |  X  |     |     |     |     |     |      |      |      |
@@ -195,3 +195,32 @@ PR 전체에 대한 코멘트로 작성해도 됩니다.
 - 비슷한 유형을 더 풀어보면 좋을 것 같은지
 - 처음에는 어떤 알고리즘이라고 생각했는데 실제로는 무엇이었는지
 - 다음에 같은 유형을 만났을 때 기억하고 싶은 점
+
+---
+
+# 참고 변수명 짓기 아이디어
+| 의미 | 자주 쓰는 변수명 | 예시 |
+|---|---|---|
+| 현재 위치/순서 | `idx`, `index` | `dfs(idx)` |
+| 현재 값 | `current`, `cur`, `now` | `current_sum` |
+| 누적 합 | `total`, `sum_value` | `total += num` |
+| 현재까지 누적 합 | `current_sum`, `total_sum` | `dfs(idx, current_sum)` |
+| 개수 | `count`, `cnt` | `count + 1` |
+| 현재까지 개수 | `count` | `dfs(idx, count)` |
+| 남은 양 | `remaining`, `remain` | `remaining_arrows` |
+| 사용한 양 | `used` | `used_arrows` |
+| 필요한 양 | `required`, `need` | `required_arrows` |
+| 비용/소모량 | `cost` | `fatigue - cost` |
+| 최댓값 | `max_value`, `max_count` | `max_count = max(...)` |
+| 최솟값 | `min_value`, `min_count` | |
+| 결과 | `result` | `result = dfs(...)` |
+| 임시 값 | `temp` | 정말 임시일 때만 |
+| 정답 | `answer` | 최종 반환값 |
+| 다음 값 | `next_value` | `next_sum` |
+| 이전 값 | `prev` | `prev_node` |
+| 노드 | `node` | `dfs(node)` |
+| 다음 노드 | `next_node`, `nxt` | |
+| 행/열 | `row`, `col` | |
+| 다음 행/열 | `nr`, `nc` | |
+| 방문 여부 | `visited` | |
+| 선택 여부 | `selected` | 백트래킹에 꽤 좋음 |
